@@ -1,0 +1,7 @@
+.app {
+  position: relative;
+}
+
+.app > section {
+  scroll-margin-top: 0;
+}
