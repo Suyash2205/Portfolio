@@ -35,6 +35,18 @@ export default function Projects() {
                 <span key={tag} className="project-tag">{tag}</span>
               ))}
             </div>
+            {project.link && (
+              <motion.a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+                whileHover={{ x: 4 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {project.linkLabel || 'View project'} →
+              </motion.a>
+            )}
           </motion.article>
         ))}
       </div>
@@ -108,6 +120,19 @@ export default function Projects() {
           border: 1px solid var(--border);
           color: var(--text-dim);
           border-radius: 2px;
+        }
+        .project-link {
+          display: inline-flex;
+          align-items: center;
+          margin-top: 1.25rem;
+          font-family: var(--font-mono);
+          font-size: 0.8rem;
+          letter-spacing: 0.1em;
+          color: var(--accent);
+          transition: opacity 0.2s;
+        }
+        .project-link:hover {
+          opacity: 0.85;
         }
       `}</style>
     </section>

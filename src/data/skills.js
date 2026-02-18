@@ -1,7 +1,6 @@
 export const skills = {
   languages: ['C/C++', 'Python', 'Java', 'HTML', 'CSS', 'JavaScript'],
-  web: ['React.js'],
-  databases: ['MySQL'],
+  webAndDatabases: ['React.js', 'MySQL'],
   coursework: [
     'Data Structures & Algorithms',
     'Operating Systems',

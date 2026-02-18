@@ -5,8 +5,7 @@ import { skills } from '../data/skills';
 
 const categories = [
   { key: 'languages', label: 'Languages' },
-  { key: 'web', label: 'Web Dev Tools' },
-  { key: 'databases', label: 'Databases' },
+  { key: 'webAndDatabases', label: 'Web & Databases' },
   { key: 'coursework', label: 'Relevant Coursework' },
   { key: 'interests', label: 'Areas of Interest' },
   { key: 'soft', label: 'Soft Skills' },

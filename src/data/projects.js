@@ -10,12 +10,16 @@ export const projects = [
     subtitle: 'Dynamic CMS',
     description: 'Developed a fully dynamic Virtual Campus Tour website with an integrated admin panel for content management. Implemented role-based access control, dynamic updates, and interactive navigation to allow administrators to modify campus information in real time without code changes.',
     tags: ['React', 'Web', 'Admin Panel', 'RBAC'],
+    link: 'https://github.com/Suyash2205/Virtual-Campus-Tour',
+    linkLabel: 'View on GitHub',
   },
   {
     title: 'E-Waste Locator',
     subtitle: 'Location-based disposal facilities',
     description: 'Built a website-based E-Waste Locator that detected user location and displayed nearest authorized disposal facilities.',
     tags: ['Web', 'Maps', 'Location'],
+    link: 'https://github.com/Suyash2205/E-Waste-Locator',
+    linkLabel: 'View on GitHub',
   },
   {
     title: 'Smart Traffic Light',
@@ -28,6 +32,16 @@ export const projects = [
     subtitle: 'Educational math puzzle',
     description: 'Built an interactive educational math puzzle game for children, designed to improve numerical reasoning and engagement through gamified learning.',
     tags: ['Game Dev', 'Education', 'Interactive'],
+    link: 'https://number-maze-final.vercel.app/',
+    linkLabel: 'Live on Vercel',
+  },
+  {
+    title: 'Balloon Pop Game',
+    subtitle: 'Educational math • React + Vite',
+    description: 'Educational math game where players pop balloons containing the correct answer. Grade-based difficulty (grades 3–7), 20 questions per round, timer, streak combos, high score persistence, and kid-friendly feedback with confetti and sound. Built with React and Vite.',
+    tags: ['React', 'Game Dev', 'Education', 'Vite'],
+    link: 'https://ballon-pop-game-final.vercel.app/',
+    linkLabel: 'Live on Vercel',
   },
   {
     title: 'Automatic Plant Watering System',

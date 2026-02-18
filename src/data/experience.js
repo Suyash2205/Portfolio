@@ -1,20 +1,11 @@
 export const experience = [
   {
-    role: 'Web Development Head',
-    company: 'Somaiya Voices',
-    period: 'April 2024 – April 2025',
+    role: 'Managing Department',
+    company: 'Fresa Frootz',
+    period: 'February 2023 – Present',
     points: [
-      'Leading the Web Dev Team building the official website of Somaiya Voices.',
-      'Active member in the recruitment process.',
-    ],
-  },
-  {
-    role: 'Jt. Alumni Relations Head',
-    company: 'Alumni Cell',
-    period: 'August 2024 – August 2025',
-    points: [
-      'Coordinated events, webinars, and communication initiatives to strengthen connections between alumni and the institution.',
-      'Managed alumni database and facilitated student-alumni interactions.',
+      'Led initiatives for customer engagement, including marketing campaigns and feedback analysis, to drive brand awareness and sales.',
+      'Played a key role in designing and executing strategies for product development and market positioning.',
     ],
   },
   {
@@ -27,13 +18,21 @@ export const experience = [
     ],
   },
   {
-    role: 'Management Team',
-    company: 'Suhani Shah',
-    period: 'August 2021 – August 2023',
+    role: 'Jt. Alumni Relations Head',
+    company: 'Alumni Cell',
+    period: 'August 2024 – August 2025',
     points: [
-      'Assuring the smooth functioning behind the scenes.',
-      'Managing and building the Discord server.',
-      'Working towards the enhancement and betterment of her programs overall.',
+      'Coordinated events, webinars, and communication initiatives to strengthen connections between alumni and the institution.',
+      'Managed alumni database and facilitated student-alumni interactions.',
+    ],
+  },
+  {
+    role: 'Web Development Head',
+    company: 'Somaiya Voices',
+    period: 'April 2024 – April 2025',
+    points: [
+      'Leading the Web Dev Team building the official website of Somaiya Voices.',
+      'Active member in the recruitment process.',
     ],
   },
   {
@@ -46,12 +45,13 @@ export const experience = [
     ],
   },
   {
-    role: 'Managing Department',
-    company: 'Fresa Frootz',
-    period: 'February 2023 – Present',
+    role: 'Management Team',
+    company: 'Suhani Shah',
+    period: 'August 2021 – August 2023',
     points: [
-      'Led initiatives for customer engagement, including marketing campaigns and feedback analysis, to drive brand awareness and sales.',
-      'Played a key role in designing and executing strategies for product development and market positioning.',
+      'Assuring the smooth functioning behind the scenes.',
+      'Managing and building the Discord server.',
+      'Working towards the enhancement and betterment of her programs overall.',
     ],
   },
 ];
