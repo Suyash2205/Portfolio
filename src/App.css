@@ -1,5 +1,11 @@
 .app {
   position: relative;
+  isolation: isolate;
+}
+
+.app > main {
+  position: relative;
+  z-index: 1;
 }
 
 .app > section {

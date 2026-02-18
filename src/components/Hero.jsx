@@ -1,83 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 
+const HeroCanvas = lazy(() => import('./three/HeroCanvas'));
+
 export default function Hero() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let w = (canvas.width = window.innerWidth);
-    let h = (canvas.height = window.innerHeight);
-    let particles = [];
-    const count = 80;
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.radius = Math.random() * 1.5 + 0.5;
-        this.opacity = Math.random() * 0.5 + 0.1;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > w) this.vx *= -1;
-        if (this.y < 0 || this.y > h) this.vy *= -1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < count; i++) particles.push(new Particle());
-
-    function drawLines() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function loop() {
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach((p) => {
-        p.update();
-        p.draw();
-      });
-      drawLines();
-      requestAnimationFrame(loop);
-    }
-    loop();
-
-    const resize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    };
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
-  }, []);
-
   return (
     <section id="hero" className="hero">
-      <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />
+      <Suspense fallback={null}>
+        <HeroCanvas />
+      </Suspense>
       <div className="hero-content">
         <motion.p
           className="hero-label"
@@ -151,16 +82,22 @@ export default function Hero() {
           position: relative;
           padding: 6rem 2rem;
         }
-        .hero-canvas {
+        .hero-three-wrap {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
+          z-index: 0;
           pointer-events: none;
+        }
+        .hero-three-wrap canvas {
+          width: 100% !important;
+          height: 100% !important;
+          display: block;
         }
         .hero-content {
           position: relative;
-          z-index: 1;
+          z-index: 2;
           text-align: center;
           max-width: 800px;
         }
@@ -169,17 +106,18 @@ export default function Hero() {
           font-size: 0.8rem;
           letter-spacing: 0.3em;
           text-transform: uppercase;
-          color: var(--text-muted);
+          color: rgba(255, 255, 255, 0.92);
           margin-bottom: 1rem;
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 1rem;
+          text-shadow: 0 0 24px rgba(0, 0, 0, 0.9), 0 1px 3px rgba(0, 0, 0, 0.8);
         }
         .hero-label-line {
           width: 40px;
           height: 1px;
-          background: linear-gradient(90deg, transparent, var(--text-muted));
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7));
         }
         .hero-title {
           font-size: clamp(2.5rem, 8vw, 5rem);
@@ -235,9 +173,10 @@ export default function Hero() {
         }
         .hero-sub {
           font-size: 1.15rem;
-          color: var(--text-muted);
+          color: rgba(255, 255, 255, 0.88);
           margin-bottom: 2.5rem;
           font-weight: 300;
+          text-shadow: 0 0 20px rgba(0, 0, 0, 0.85), 0 1px 2px rgba(0, 0, 0, 0.7);
         }
         .hero-cta {
           display: flex;
@@ -257,8 +196,8 @@ export default function Hero() {
         }
         .hero-btn.outline {
           background: transparent;
-          color: var(--text-muted);
-          border-color: var(--border-bright);
+          color: rgba(255, 255, 255, 0.85);
+          border: 1px solid rgba(255, 255, 255, 0.5);
         }
         .hero-btn.outline:hover {
           color: var(--accent);

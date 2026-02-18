@@ -1,6 +1,8 @@
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
+
+const SectionCanvas = lazy(() => import('./three/SectionCanvas'));
 
 export default function About() {
   const ref = useRef(null);
@@ -8,6 +10,9 @@ export default function About() {
 
   return (
     <section id="about" className="section about" ref={ref}>
+      <Suspense fallback={null}>
+        <SectionCanvas />
+      </Suspense>
       <motion.h2
         initial={{ opacity: 0, x: -30 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -57,6 +62,20 @@ export default function About() {
         </div>
       </motion.div>
       <style>{`
+        .about { position: relative; }
+        .section-shape-wrap {
+          position: absolute;
+          top: 2rem;
+          right: 2rem;
+          width: 140px;
+          height: 140px;
+          pointer-events: none;
+          opacity: 0.6;
+        }
+        .section-shape-wrap canvas {
+          width: 100% !important;
+          height: 100% !important;
+        }
         .about-card {
           background: var(--bg-card);
           border: 1px solid var(--border);
