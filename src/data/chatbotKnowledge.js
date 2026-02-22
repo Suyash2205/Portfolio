@@ -29,11 +29,11 @@ export const CHATBOT_KNOWLEDGE = {
   ],
 
   projects: [
-    { name: 'Virtual Campus Tour with Admin Panel', detail: 'Fully dynamic website with admin panel, role-based access, dynamic updates, interactive navigation.' },
-    { name: 'E-Waste Locator', detail: 'Website-based locator that detects user location and shows nearest authorized disposal facilities.' },
+    { name: 'E-Waste Locator', detail: 'Website-based locator (EcoRecycle) that detects user location and shows nearest authorized disposal facilities; credits, 500+ facilities.' },
+    { name: 'vaibhavkadam.in', detail: 'WordPress portfolio for creative director Vaibhav Kadam; CMS for work showcase, FAQ, contact.' },
     { name: 'Number Maze Game', detail: 'Interactive educational math puzzle game for children.' },
     { name: 'Balloon Pop Game', detail: 'Educational math game with React + Vite; grade-based difficulty, timer, high scores.' },
-    { name: 'vaibhavkadam.in', detail: 'WordPress portfolio for creative director Vaibhav Kadam; CMS for work showcase, FAQ, contact.' },
+    { name: 'Virtual Campus Tour with Admin Panel', detail: 'Fully dynamic website with admin panel, role-based access, dynamic updates, interactive navigation.' },
   ],
 
   skills: {

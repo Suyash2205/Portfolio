@@ -1,14 +1,5 @@
 export const projects = [
   {
-    title: 'Virtual Campus Tour with Admin Panel',
-    subtitle: 'Dynamic CMS',
-    description: 'Developed a fully dynamic Virtual Campus Tour website with an integrated admin panel for content management. Implemented role-based access control, dynamic updates, and interactive navigation to allow administrators to modify campus information in real time without code changes.',
-    tags: ['React', 'Web', 'Admin Panel', 'RBAC'],
-    link: 'https://github.com/Suyash2205/Virtual-Campus-Tour',
-    linkLabel: 'View on GitHub',
-    preview: '/previews/campus-tour.jpg',
-  },
-  {
     title: 'E-Waste Locator',
     subtitle: 'Location-based disposal facilities',
     description: 'Web app (EcoRecycle) to find e-waste recycling facilities near the user and earn credits for responsible disposal. Uses location detection to show 500+ certified, eco-friendly centers. Includes find facilities, calculate credits, and about sections—focused on making sustainable e-waste disposal easy and rewarding.',
@@ -16,6 +7,15 @@ export const projects = [
     link: 'https://github.com/Suyash2205/E-Waste-Locator',
     linkLabel: 'View on GitHub',
     preview: '/previews/ewaste-locator.jpg',
+  },
+  {
+    title: 'vaibhavkadam.in',
+    subtitle: 'WordPress CMS • Creative director portfolio',
+    description: 'Portfolio site for creative director Vaibhav Kadam, built with WordPress for content, files, and database management. Showcases his work (Starbucks, FILA, Prime, MAC, etc.), FAQ, and contact.',
+    tags: ['WordPress', 'CMS', 'Web', 'Content Management'],
+    link: 'https://vaibhavkadam.in/',
+    linkLabel: 'Visit site',
+    preview: '/previews/vaibhavkadam.jpg',
   },
   {
     title: 'Number Maze Game',
@@ -38,12 +38,12 @@ export const projects = [
     preview: '/previews/balloon-pop.jpg',
   },
   {
-    title: 'vaibhavkadam.in',
-    subtitle: 'WordPress CMS • Creative director portfolio',
-    description: 'Portfolio site for creative director Vaibhav Kadam, built with WordPress for content, files, and database management. Showcases his work (Starbucks, FILA, Prime, MAC, etc.), FAQ, and contact.',
-    tags: ['WordPress', 'CMS', 'Web', 'Content Management'],
-    link: 'https://vaibhavkadam.in/',
-    linkLabel: 'Visit site',
-    preview: '/previews/vaibhavkadam.jpg',
+    title: 'Virtual Campus Tour with Admin Panel',
+    subtitle: 'Dynamic CMS',
+    description: 'Developed a fully dynamic Virtual Campus Tour website with an integrated admin panel for content management. Implemented role-based access control, dynamic updates, and interactive navigation to allow administrators to modify campus information in real time without code changes.',
+    tags: ['React', 'Web', 'Admin Panel', 'RBAC'],
+    link: 'https://github.com/Suyash2205/Virtual-Campus-Tour',
+    linkLabel: 'View on GitHub',
+    preview: '/previews/campus-tour.jpg',
   },
 ];
