@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Chatbot from './components/Chatbot';
@@ -11,6 +12,15 @@ import ParticleBackground from './components/ParticleBackground';
 import './App.css';
 
 function App() {
+  // Always open at top on load/reload (override hash scroll and scroll restoration)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    const t = setTimeout(() => window.scrollTo(0, 0), 0);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <div className="app">
       <ParticleBackground />
