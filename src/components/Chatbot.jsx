@@ -51,14 +51,15 @@ const QUICK_REPLIES = [
 
 export default function Chatbot() {
   const ref = useRef(null);
-  const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = messagesContainerRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   };
 
   useEffect(() => {
@@ -119,7 +120,7 @@ export default function Chatbot() {
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        Ask about Suyash
+        Got questions? I've read his resume.
       </motion.h2>
       <motion.p
         className="chatbot-sub"
@@ -127,7 +128,7 @@ export default function Chatbot() {
         animate={inView ? { opacity: 1 } : {}}
         transition={{ delay: 0.1, duration: 0.5 }}
       >
-        Ask about a specific project, his work, skills, or how to connect. Answers use the same info as this site.
+        I've ingested this site. Projects, experience, skills, contact — ask anything, I'll keep it real.
       </motion.p>
       <motion.div
         className="chatbot-card"
@@ -135,10 +136,10 @@ export default function Chatbot() {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.15 }}
       >
-        <div className="chatbot-messages">
+        <div ref={messagesContainerRef} className="chatbot-messages">
           {messages.length === 0 && (
             <div className="chatbot-placeholder">
-              Ask me anything about Suyash...
+              Try: "Lane Detection", "his work", or "how to connect"
             </div>
           )}
           {messages.map((msg, i) => (
@@ -155,7 +156,6 @@ export default function Chatbot() {
               </div>
             </div>
           )}
-          <div ref={messagesEndRef} />
         </div>
         <div className="chatbot-quick">
           {QUICK_REPLIES.map(({ id, label }) => (
@@ -175,7 +175,7 @@ export default function Chatbot() {
           <input
             type="text"
             className="chatbot-input"
-            placeholder="e.g. Tell me about the Lane Detection project..."
+            placeholder="Ask about a project, his work, or contact..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             aria-label="Message"
