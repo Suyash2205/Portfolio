@@ -1,6 +1,46 @@
+/** Flat list for the Skills Globe (all shown on sphere). Chatbot still uses categories below. */
+const GLOBE_SKILLS = [
+  'C/C++',
+  'Python',
+  'Java',
+  'TypeScript',
+  'Dart',
+  'SQL',
+  'R',
+  'React.js',
+  'Next.js',
+  'Vite',
+  'Three.js',
+  'React Three Fiber',
+  'Framer Motion',
+  'HTML5',
+  'CSS3',
+  'Responsive UI Design',
+  'Node.js',
+  'Express.js',
+  'REST API Development',
+  'JWT Authentication',
+  'MongoDB',
+  'MySQL',
+  'Firebase',
+  'Android Studio',
+  'Flutter',
+  'XML Layouts',
+  'Git',
+  'GitHub',
+  'Vercel',
+  'Figma',
+  'WordPress',
+  'Cursor AI',
+  'Docker',
+];
+
 export const skills = {
-  languages: ['C/C++', 'Python', 'Java', 'HTML', 'CSS', 'JavaScript'],
-  webAndDatabases: ['React.js', 'MySQL'],
+  /** For Skills Globe: single flat list */
+  globe: GLOBE_SKILLS,
+  /** Below: for chatbot / other uses */
+  languages: ['C/C++', 'Python', 'Java', 'TypeScript', 'Dart', 'SQL', 'R', 'HTML5', 'CSS3', 'JavaScript'],
+  webAndDatabases: ['React.js', 'Next.js', 'MySQL', 'MongoDB', 'Firebase', 'Node.js', 'Express.js'],
   coursework: [
     'Data Structures & Algorithms',
     'Operating Systems',

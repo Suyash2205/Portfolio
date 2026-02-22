@@ -1,7 +1,39 @@
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
+
+function ProjectPreview({ project }) {
+  const [failed, setFailed] = useState(false);
+  if (!project.preview || failed) return null;
+  const img = (
+    <img
+      src={project.preview}
+      alt={`${project.title} preview`}
+      className="project-preview-img"
+      loading="lazy"
+      decoding="async"
+      onError={() => setFailed(true)}
+    />
+  );
+  return (
+    <div className="project-preview-wrap">
+      {project.link ? (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="project-preview-link"
+          aria-label={`Open ${project.title}`}
+        >
+          {img}
+        </a>
+      ) : (
+        img
+      )}
+    </div>
+  );
+}
 
 export default function Projects() {
   const ref = useRef(null);
@@ -26,6 +58,9 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: i * 0.08 }}
             whileHover={{ y: -6, transition: { duration: 0.2 } }}
           >
+            {project.preview && (
+              <ProjectPreview project={project} />
+            )}
             <div className="project-number">0{i + 1}</div>
             <h3>{project.title}</h3>
             <p className="project-subtitle">{project.subtitle}</p>
@@ -35,18 +70,32 @@ export default function Projects() {
                 <span key={tag} className="project-tag">{tag}</span>
               ))}
             </div>
-            {project.link && (
-              <motion.a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-                whileHover={{ x: 4 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {project.linkLabel || 'View project'} →
-              </motion.a>
-            )}
+            <div className="project-links">
+              {project.link && (
+                <motion.a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {project.linkLabel || 'View project'} →
+                </motion.a>
+              )}
+              {project.github && (
+                <motion.a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  View on GitHub →
+                </motion.a>
+              )}
+            </div>
           </motion.article>
         ))}
       </div>
@@ -64,6 +113,21 @@ export default function Projects() {
           position: relative;
           overflow: hidden;
           transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .project-preview-wrap {
+          margin: -2rem -2rem 1.25rem -2rem;
+          overflow: hidden;
+          border-radius: 4px 4px 0 0;
+        }
+        .project-preview-link {
+          display: block;
+        }
+        .project-preview-img {
+          width: 100%;
+          aspect-ratio: 16 / 10;
+          object-fit: cover;
+          display: block;
+          background: var(--bg-elevated);
         }
         .project-card::before {
           content: '';
@@ -113,18 +177,23 @@ export default function Projects() {
         }
         .project-tag {
           font-family: var(--font-mono);
-          font-size: 0.65rem;
-          letter-spacing: 0.1em;
-          padding: 0.35rem 0.65rem;
+          font-size: 0.85rem;
+          letter-spacing: 0.08em;
+          padding: 0.5rem 0.85rem;
           background: var(--bg-elevated);
           border: 1px solid var(--border);
-          color: var(--text-dim);
+          color: var(--accent);
           border-radius: 2px;
+        }
+        .project-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin-top: 1.25rem;
         }
         .project-link {
           display: inline-flex;
           align-items: center;
-          margin-top: 1.25rem;
           font-family: var(--font-mono);
           font-size: 0.8rem;
           letter-spacing: 0.1em;

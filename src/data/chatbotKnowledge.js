@@ -29,12 +29,11 @@ export const CHATBOT_KNOWLEDGE = {
   ],
 
   projects: [
-    { name: 'Lane Detection System', detail: 'ML implementation based on IEEE paper (HWLane). Tiny U-Net segmentation, BCE + Dice loss, SWA, TTA. TuSimple-style dataset.' },
     { name: 'Virtual Campus Tour with Admin Panel', detail: 'Fully dynamic website with admin panel, role-based access, dynamic updates, interactive navigation.' },
     { name: 'E-Waste Locator', detail: 'Website-based locator that detects user location and shows nearest authorized disposal facilities.' },
-    { name: 'Smart Traffic Light', detail: 'Camera-based traffic analysis to dynamically adjust red light timers and optimize flow.' },
     { name: 'Number Maze Game', detail: 'Interactive educational math puzzle game for children.' },
-    { name: 'Automatic Plant Watering System', detail: 'IoT-based system with sensors and microcontrollers for soil moisture and irrigation.' },
+    { name: 'Balloon Pop Game', detail: 'Educational math game with React + Vite; grade-based difficulty, timer, high scores.' },
+    { name: 'vaibhavkadam.in', detail: 'WordPress portfolio for creative director Vaibhav Kadam; CMS for work showcase, FAQ, contact.' },
   ],
 
   skills: {

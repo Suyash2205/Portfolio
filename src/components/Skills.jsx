@@ -1,94 +1,47 @@
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { skills } from '../data/skills';
 
-const categories = [
-  { key: 'languages', label: 'Languages' },
-  { key: 'webAndDatabases', label: 'Web & Databases' },
-  { key: 'coursework', label: 'Relevant Coursework' },
-  { key: 'interests', label: 'Areas of Interest' },
-  { key: 'soft', label: 'Soft Skills' },
+const CATEGORIES = [
+  { key: 'languages', label: 'LANGUAGES', items: skills.languages },
+  { key: 'webAndDatabases', label: 'WEB & DATABASES', items: skills.webAndDatabases },
+  { key: 'coursework', label: 'RELEVANT COURSEWORK', items: skills.coursework || [] },
+  { key: 'interests', label: 'AREAS OF INTEREST', items: skills.interests || [] },
+  { key: 'soft', label: 'SOFT SKILLS', items: skills.soft || [] },
 ];
 
 export default function Skills() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
   return (
-    <section id="skills" className="section skills" ref={ref}>
+    <section id="skills" className="section skills skills-categories" data-reactor-section="skills">
+      <div className="skills-globe-bg" aria-hidden="true" />
+
       <motion.h2
-        initial={{ opacity: 0, x: -30 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.6 }}
+        className="skills-technical-title"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        Technical Skills
+        TECHNICAL SKILLS
       </motion.h2>
-      <div className="skills-grid">
-        {categories.map(({ key, label }, i) => (
-          <motion.div
-            key={key}
-            className="skills-category"
-            initial={{ opacity: 0, y: 25 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: i * 0.06 }}
-          >
-            <h3 className="skills-label">{label}</h3>
-            <div className="skills-tags">
-              {skills[key].map((skill, j) => (
-                <motion.span
-                  key={skill}
-                  className="skill-tag"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: i * 0.06 + j * 0.03 }}
-                  whileHover={{ scale: 1.05, borderColor: 'var(--border-bright)' }}
-                >
-                  {skill}
-                </motion.span>
+
+      <motion.div
+        className="skills-categories-grid"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        {CATEGORIES.map(({ key, label, items }) => (
+          <div key={key} className="skills-category-box">
+            <h3 className="skills-category-title">{label}</h3>
+            <div className="skills-category-pills">
+              {items.map((name) => (
+                <span key={name} className="skill-pill">
+                  {name}
+                </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         ))}
-      </div>
-      <style>{`
-        .skills-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-          gap: 2rem;
-        }
-        .skills-category {
-          background: var(--bg-card);
-          border: 1px solid var(--border);
-          padding: 1.75rem;
-          border-radius: 4px;
-          transition: border-color 0.2s;
-        }
-        .skills-category:hover {
-          border-color: var(--border-bright);
-        }
-        .skills-label {
-          font-family: var(--font-mono);
-          font-size: 0.7rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: var(--text-dim);
-          margin-bottom: 1rem;
-        }
-        .skills-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-        .skill-tag {
-          font-size: 0.9rem;
-          color: var(--text-muted);
-          padding: 0.4rem 0.75rem;
-          border: 1px solid var(--border);
-          border-radius: 2px;
-          transition: border-color 0.2s;
-        }
-      `}</style>
+      </motion.div>
     </section>
   );
 }
