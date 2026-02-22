@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const links = [
   { id: 'hero', label: 'Home' },
+  { id: 'chatbot', label: 'Chat' },
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' },

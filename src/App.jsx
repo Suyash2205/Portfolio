@@ -1,5 +1,6 @@
 import Nav from './components/Nav';
 import Hero from './components/Hero';
+import Chatbot from './components/Chatbot';
 import About from './components/About';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -16,6 +17,7 @@ function App() {
       <Nav />
       <main>
         <Hero />
+        <Chatbot />
         <About />
         <Experience />
         <Education />
